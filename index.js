@@ -1,7 +1,7 @@
 const container = document.createElement('div');
 container.classList.add('container')
 
-const getDogUpper = (dog) => dog.charAt(0).toUpperCase() + dog.slice(1);
+const getUpper = (dog) => dog.charAt(0).toUpperCase() + dog.slice(1);
 
 function getPhoto(dog) {
     return fetch(`https://dog.ceo/api/breed/${dog}/images`)
@@ -13,7 +13,7 @@ function getPhoto(dog) {
 }
 
 function getWikiText(dog) {
-    return fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${getDogUpper(dog)}`)
+    return fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${getUpper(dog)}`)
     .then(response => response.json())
     .catch(error => {
         console.error("Error fetching data:", error);
@@ -29,7 +29,7 @@ function createWikiItem(dog) {
     
     const header = document.createElement('h1');
     wikiItem.classList.add('wiki-header')
-    header.textContent = getDogUpper(dog)
+    header.textContent = getUpper(dog)
     wikiItem.appendChild(header)
 
     const content = document.createElement('div');
